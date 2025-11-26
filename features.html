@@ -264,6 +264,7 @@
             transition: all 0.3s ease;
             display: flex;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
         }
 
         .capsule-toggle::before {
@@ -1466,19 +1467,6 @@
             
             console.log('🎉 PocketHisab Features Page Loaded!');
             
-            // Add animation to feature cards on load
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                
-                setTimeout(() => {
-                    card.style.transition = 'all 0.6s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-
             // Scroll helpers
             toggleBackToTop();
             window.addEventListener('scroll', () => {

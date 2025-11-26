@@ -258,6 +258,7 @@
             transition: all 0.3s ease;
             display: flex;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
         }
 
         .capsule-toggle::before {
@@ -1418,19 +1419,6 @@
             
             console.log('🎉 PocketHisab Contact Page Loaded!');
             
-            // Add animation to contact items on load
-            const contactItems = document.querySelectorAll('.info-item, .contact-form, .contact-info');
-            contactItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(30px)';
-                
-                setTimeout(() => {
-                    item.style.transition = 'all 0.6s ease';
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-
             const welcomeText = isEnglish ? 'We are here to help you!' : 'আমরা আপনাকে সাহায্য করতে এখানে আছি!';
             showMessage(welcomeText, 'info');
         });
