@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketHisab - Pricing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Safari Compatibility */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-bottom: env(safe-area-inset-bottom);
+            background: linear-gradient(135deg, #f0fff0 0%, #e6f7f4 100%);
+            background-attachment: fixed;
+            background-size: 400% 400%;
+            background-color: #e6f7f4;
+            min-height: 100%;
+        }
+
+        /* Body Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0fff0 0%, #e6f7f4 100%);
+            background-attachment: fixed;
+            color: #212529;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100svh;
+            min-height: 100dvh;
+            padding-bottom: env(safe-area-inset-bottom);
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: inherit;
+            background-attachment: fixed;
+            z-index: -2;
+            pointer-events: none;
+            animation: inherit;
+            transform: translateZ(0);
+        }
+
+        @supports (padding: max(0px)) {
+            body {
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+            }
+            
+            .main-content {
+                padding-bottom: max(110px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Gradient text fix */
+        .page-title,
+        .pricing-title,
+        .pricing-price {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-orange {
+            background: linear-gradient(45deg, #fd7e14, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #fd7e14; /* Fallback color */
+        }
+
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        /* Scroll Progress Bar */
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: max(26px, calc(26px + env(safe-area-inset-bottom)));
+            right: 26px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #28a745, #218838);
+            border: none;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1400;
+            box-shadow: 0 6px 18px rgba(40, 167, 69, 0.25);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Confetti Container */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1003;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            opacity: 0;
+            animation: confettiFall 3s ease-in-out;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Rainbow Background Animation */
+        @keyframes gradientAnimation {
+            0% { 
+                background-position: 0% 50%;
+                -webkit-background-position: 0% 50%;
+            }
+            25% { 
+                background-position: 50% 50%;
+                -webkit-background-position: 50% 50%;
+            }
+            50% { 
+                background-position: 100% 50%;
+                -webkit-background-position: 100% 50%;
+            }
+            75% { 
+                background-position: 50% 50%;
+                -webkit-background-position: 50% 50%;
+            }
+            100% { 
+                background-position: 0% 50%;
+                -webkit-background-position: 0% 50%;
+            }
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(90deg, rgba(220, 235, 232, 0.85), rgba(210, 230, 240, 0.85));
+            backdrop-filter: blur(20px);;
+            -webkit-backdrop-filter: blur(20px);  /* ← Add this */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #28a745, #218838);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(40, 167, 69, 0.4);
+        }
+
+        .logo-circle i {
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        .nav-brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #212529, #495057);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #343a40;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-links a.active {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        /* Toggle Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Capsule Toggle Styles */
+        .capsule-toggle {
+            width: 70px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            padding: 2px;
+            cursor: pointer;
+            position: relative;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .capsule-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .capsule-toggle:hover::before {
+            left: 100%;
+        }
+
+        .capsule-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .toggle-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .toggle-thumb {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.3s ease;
+            z-index: 2;
+            border-radius: 18px;
+        }
+
+        .toggle-thumb.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #28a745, #218838);
+        }
+
+        .toggle-icon {
+            font-size: 12px;
+        }
+        /* Main Content */
+        .main-content {
+            min-height: 100vh;
+            padding: 120px 20px 110px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Add explicit color fallback for Safari */
+            color: #28a745;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #495057;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* Pricing Card with 3D Hover */
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px);
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            -webkit-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #28a745, #ffc107, #dc3545, #28a745);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            z-index: -1;
+            border-radius: 20px;
+            opacity: 0;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border: 2px solid #28a745;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-8px) rotateX(5deg);
+        }
+
+        /* Badge System */
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        .best-value-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #fd7e14, #ffc107);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pricing-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1cc88a, #13855c); /* Default color */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover .pricing-icon {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 6px 18px rgba(40, 167, 69, 0.35);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #212529, #495057);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #212529;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-period {
+            color: #495057;
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            color: #495057;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-features li:hover {
+            color: #fd7e14;
+            transform: translateX(5px);
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #28a745, #218838);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #fd7e14, #ffc107);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(253, 126, 20, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 126, 20, 0.4);
+        }
+
+        /* Summary Section - Capsule Shape */
+        .summary-section {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            margin: 50px auto 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 1100px;
+        }
+
+        .summary-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #28a745, #ffc107, #dc3545, #28a745);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            z-index: -1;
+            border-radius: 52px;
+            opacity: 0;
+        }
+
+        .summary-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 18px;
+        }
+
+        .summary-text {
+            color: #495057;
+            line-height: 1.7;
+            font-size: 1rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: nowrap; /* Ensure buttons stay on one line */
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            margin: 50px auto 0;
+            max-width: 1100px;
+        }
+
+        .faq-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-question h3 {
+            color: #343a40;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #495057;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer Payment Section */
+        .footer-section {
+            position: relative;
+            width: calc(100% - 80px);
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 15px 20px;
+            margin: 30px auto 20px;
+            overflow: hidden;
+        }
+
+        /* Backdrop filter fix */
+        .navbar,
+        .glass-card,
+        .contact-form,
+        .contact-info,
+        .summary-section,
+        .faq-section {
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .scrolling-payment-methods {
+            display: flex;
+            animation: scrollPayment 12s linear infinite;
+            gap: 40px;
+        }
+
+        @keyframes scrollPayment {
+            0% {
+                transform: translateX(0);
+                -webkit-transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+            }
+        }
+
+        .footer-section .payment-method {
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .footer-section .payment-logo {
+            height: 24px;
+            max-width: 80px;
+            object-fit: contain;
+        }
+        .footer-section .payment-logo.fa-icon {
+            font-size: 24px;
+        }
+        .footer-section .payment-name {
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        /* Shining Animation on Hover */
+
+        .footer-section .payment-method:hover {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section .payment-note {
+            color: #495057;
+            font-size: 12px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Payment Security Badges */
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #495057;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Message Box */
+        .message {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 500;
+            z-index: 1001;
+            backdrop-filter: blur(20px);
+            animation: slideIn 0.3s ease;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .message.success {
+            background: rgba(46, 125, 50, 0.85);
+            color: white;
+        }
+
+        .message.info {
+            background: rgba(33, 150, 243, 0.85);
+            color: white;
+        }
+
+        /* Scroll Animation for Mobile */
+        @media (max-width: 768px) {
+            .pricing-card {
+                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            
+            .card-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .currency-converter {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 20px auto;
+                max-width: 300px;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 8px 20px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .nav-left {
+                order: 1;
+                flex: 1;
+            }
+            
+            .nav-controls {
+                order: 2;
+                gap: 6px;
+            }
+            
+            .nav-center {
+                order: 3;
+                flex: 1 1 100%;
+                justify-content: center;
+                margin-top: 8px;
+            }
+            
+            .nav-links {
+                gap: 12px;
+            }
+            
+            .nav-links a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+            
+            .capsule-toggle {
+                width: 65px;
+                height: 28px;
+            }
+            
+            .nav-brand {
+                font-size: 1.3rem;
+            }
+            
+            .logo-circle {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .logo-circle i {
+                font-size: 14px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .main-content {
+                padding: 120px 15px 100px;
+            }
+            
+            .cta-buttons {
+                flex-direction: row; /* Keep buttons in a row on mobile */
+                align-items: center;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-8px);
+            }
+
+            /* Footer Responsive */
+            .footer-section {
+                width: calc(100% - 60px);
+                padding: 12px 15px;
+                border-radius: 40px;
+                margin: 40px auto 25px;
+            }
+            
+            .footer-section .payment-method {
+                min-width: 100px;
+                padding: 8px 12px;
+                gap: 6px;
+            }
+            
+            .footer-section .payment-icon {
+                font-size: 16px;
+                width: 20px;
+            }
+            
+            .footer-section .payment-name {
+                font-size: 11px;
+            }
+            
+            .footer-section .payment-note {
+                font-size: 11px;
+            }
+            
+            .scrolling-payment-methods {
+                gap: 15px;
+                animation: scrollPayment 16s linear infinite;
+            }
+
+            /* Summary Section Responsive */
+            .summary-section {
+                border-radius: 40px;
+                padding: 25px;
+                margin: 40px auto 0;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 6px 15px;
+            }
+            
+            .nav-links {
+                gap: 8px;
+            }
+            
+            .nav-links a {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+            
+            .capsule-toggle {
+                width: 60px;
+                height: 26px;
+            }
+            
+            .toggle-icon {
+                font-size: 10px;
+            }
+            
+            .nav-brand {
+                font-size: 1.1rem;
+            }
+
+            /* Footer Responsive */
+            .footer-section {
+                width: calc(100% - 40px);
+                padding: 10px 12px;
+                border-radius: 35px;
+                margin: 30px auto 20px;
+            }
+            
+            .footer-section .payment-method {
+                min-width: 90px;
+                padding: 6px 10px;
+                gap: 5px;
+                flex-direction: column;
+            }
+            
+            .footer-section .payment-icon {
+                font-size: 14px;
+                width: 18px;
+            }
+            
+            .footer-section .payment-name {
+                font-size: 10px;
+            }
+            
+            .footer-section .payment-note {
+                font-size: 10px;
+                margin-top: 8px;
+            }
+            
+            .scrolling-payment-methods {
+                gap: 12px;
+                animation: scrollPayment 14s linear infinite;
+            }
+
+            /* Summary Section Responsive */
+            .summary-section {
+                border-radius: 35px;
+                padding: 20px;
+                margin: 30px auto 0;
+            }
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #000000;
+            background-size: 400% 400%;
+            animation: gradientAnimation 25s ease infinite;
+        }
+
+        body.dark-mode .navbar {
+            background: linear-gradient(90deg, rgba(30, 144, 255, 0.15), rgba(138, 43, 226, 0.15));
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .nav-brand {
+            background: linear-gradient(45deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.dark-mode .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        body.dark-mode .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .nav-links a.active {
+            color: #00BFFF;
+            background: rgba(0, 191, 255, 0.1);
+        }
+
+        body.dark-mode .capsule-toggle {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        body.dark-mode .toggle-thumb {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.dark-mode .toggle-thumb.active {
+            background: linear-gradient(135deg, #00BFFF, #1E90FF); /* Blue gradient for active dark mode toggle */
+            color: #ffffff; /* White text for active dark mode toggle */
+        }
+
+        body.dark-mode .page-title {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+        }
+
+        body.dark-mode .page-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.dark-mode .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .pricing-card::before {
+            background: linear-gradient(45deg, #222, #444, #222, #444);
+            opacity: 0.2;
+        }
+
+        body.dark-mode .pricing-card.popular {
+            border-color: #00BFFF;
+        }
+
+        body.dark-mode .pricing-icon {
+            background: linear-gradient(135deg, #444, #666); /* Fallback, will be overridden */
+        }
+
+        body.dark-mode .pricing-title {
+            background: linear-gradient(45deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.dark-mode .pricing-price {
+            background: linear-gradient(45deg, #00BFFF, #1E90FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.dark-mode .pricing-period {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.dark-mode .pricing-features li {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.dark-mode .pricing-features li:before {
+            color: #00BFFF;
+        }
+
+        body.dark-mode .pricing-features li:hover {
+            color: #FF00FF;
+        }
+
+        /* Dark Mode Footer */
+        body.dark-mode .footer-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .footer-section .payment-logo {
+            filter: brightness(0.9);
+        }
+
+        body.dark-mode .footer-section .payment-name {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        body.dark-mode .summary-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .summary-section::before {
+            background: linear-gradient(45deg, #222, #444, #222, #444);
+            opacity: 0.2;
+        }
+
+        body.dark-mode .btn-secondary {
+            background: linear-gradient(45deg, #fd7e14, #ffc107);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(253, 126, 20, 0.3);
+        }
+
+        body.dark-mode .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(253, 126, 20, 0.4);
+        }
+
+        body.dark-mode .summary-title {
+            color: #ffffff;
+        }
+
+        body.dark-mode .summary-text {
+            color: #ffffff;
+        }
+
+        body.dark-mode .security-badge {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-mode .faq-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .faq-title {
+            color: #ffffff;
+        }
+
+        body.dark-mode .faq-question h3 {
+            color: #ffffff;
+        }
+
+        body.dark-mode .faq-answer {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animation fixes */
+        * {
+            -webkit-transform: translateZ(0);
+            -webkit-perspective: 1000;
+        }
+
+        /* Safari Mobile Bottom Bar Fix */
+        @supports (padding: max(0px)) {
+            body {
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+            }
+            
+            .main-content {
+                padding-bottom: max(110px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Colorful Pricing Icons */
+        .pricing-grid .pricing-card:nth-of-type(1) .pricing-icon { background: linear-gradient(135deg, #1cc88a, #13855c); } /* Basic */
+        .pricing-grid .pricing-card:nth-of-type(2) .pricing-icon { background: linear-gradient(135deg, #4e73df, #224abe); } /* Standard */
+        .pricing-grid .pricing-card:nth-of-type(3) .pricing-icon { background: linear-gradient(135deg, #f6c23e, #dda20a); } /* Premium */
+
+        /* Dark Mode Colorful Pricing Icons */
+        body.dark-mode .pricing-grid .pricing-card:nth-of-type(1) .pricing-icon { background: linear-gradient(135deg, #1cc88a, #13855c); }
+        body.dark-mode .pricing-grid .pricing-card:nth-of-type(2) .pricing-icon { background: linear-gradient(135deg, #4e73df, #224abe); }
+        body.dark-mode .pricing-grid .pricing-card:nth-of-type(3) .pricing-icon { background: linear-gradient(135deg, #f6c23e, #dda20a); }
+
+        .pricing-icon i {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <!-- Left Side: Logo + Brand Name -->
+        <div class="nav-left">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="nav-brand">PocketHisab</div>
+            </div>
+        </div>
+
+        <!-- Center: Navigation Links -->
+        <div class="nav-center">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="pricing.html" class="active">Pricing</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <!-- Right Side: Toggles -->
+        <div class="nav-controls">
+            <!-- Dark/Light Mode Toggle -->
+            <div class="capsule-toggle" id="darkModeToggle">
+                <div class="toggle-track">
+                    <div class="toggle-thumb">
+                        <span class="toggle-icon">☀️</span>
+                    </div>
+                    <div class="toggle-thumb">
+                        <span class="toggle-icon">🌙</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Language Toggle -->
+            <div class="capsule-toggle" id="languageToggle">
+                <div class="toggle-track">
+                    <div class="toggle-thumb">
+                        <span class="toggle-icon">EN</span>
+                    </div>
+                    <div class="toggle-thumb">
+                        <span class="toggle-icon">BN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title" id="pageTitle">PocketHisab Pricing</h1>
+            <p class="page-subtitle" id="pageSubtitle">Choose the perfect plan for your personal accounting needs</p>
+        </div>
+
+        <!-- Pricing Grid -->
+        <div class="pricing-grid">
+            <!-- Basic Plan -->
+            <div class="pricing-card">
+                <div class="best-value-badge" id="bestForStarters">Best for Starters</div>
+                <div class="pricing-icon"><i class="fas fa-seedling"></i></div>
+                <h3 class="pricing-title" id="basicTitle">Basic</h3>
+                <div class="pricing-price" id="basicPrice">৳149</div>
+                <div class="pricing-period" id="basicPeriod">per month</div>
+                <ul class="pricing-features">
+                    <li id="basicFeature1">📱 300 SMS per month</li>
+                    <li id="basicFeature2">📊 Basic Dashboard</li>
+                    <li id="basicFeature3">💳 Income/Expense Tracking</li>
+                    <li id="basicFeature4">📧 Email Support</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('basic')" id="basicBtn">Select Basic</button>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="pricing-card popular">
+                <div class="popular-badge" id="popularBadge">Most Popular</div>
+                <div class="pricing-icon"><i class="fas fa-rocket"></i></div>
+                <h3 class="pricing-title" id="standardTitle">Standard</h3>
+                <div class="pricing-price" id="standardPrice">৳199</div>
+                <div class="pricing-period" id="standardPeriod">per month</div>
+                <ul class="pricing-features">
+                    <li id="standardFeature1">📱 400 SMS per month</li>
+                    <li id="standardFeature2">📈 Advanced Dashboard</li>
+                    <li id="standardFeature3">📈 Investment Tracking</li>
+                    <li id="standardFeature4">⚡ Priority Support</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('standard')" id="standardBtn">Select Standard</button>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="pricing-card">
+                <div class="best-value-badge" id="ultimateFeatures">Ultimate Features</div>
+                <div class="pricing-icon"><i class="fas fa-crown"></i></div>
+                <h3 class="pricing-title" id="premiumTitle">Premium</h3>
+                <div class="pricing-price" id="premiumPrice">৳249</div>
+                <div class="pricing-period" id="premiumPeriod">per month</div>
+                <ul class="pricing-features">
+                    <li id="premiumFeature1">📱 500 SMS per month</li>
+                    <li id="premiumFeature2">🎯 Full Feature Access</li>
+                    <li id="premiumFeature3">📑 Contract Management</li>
+                    <li id="premiumFeature4">🕒 24/7 Support</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('premium')" id="premiumBtn">Select Premium</button>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="faq-title text-orange" id="faqTitle">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What payment methods do you accept?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major Bangladeshi payment methods including bKash, Nagad, Rocket, Visa/MasterCard, and bank transfers.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I change my plan later?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is there a free trial available?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer a 14-day free trial for all new users. No credit card required to start your trial.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How secure is my financial data?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We use bank-level encryption and security measures to protect your data. Your financial information is completely safe with us.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Section - Capsule Shape -->
+        <div class="summary-section">
+            <h2 class="summary-title text-orange" id="summaryTitle">Ready to Get Started?</h2>
+            <p class="summary-text" id="summaryText">
+                All plans include our core features with different SMS limits. Start with Basic and upgrade anytime. 
+                30-day money-back guarantee on all plans.
+            </p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="btn btn-primary" id="createAccountBtn">
+                    📝 Create Account
+                </a>
+                <a href="index.html" class="btn btn-secondary" id="loginBtn">
+                    🔐 Login Now
+                </a>
+            </div>
+            
+            <!-- Security Badges -->
+            <div class="security-badges">
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Bank-Level Security</span>
+                </div>
+                <div class="security-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>256-bit Encryption</span>
+                </div>
+                <div class="security-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>PCI DSS Compliant</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Payment Section -->
+        <div class="footer-section">
+            <div class="scrolling-payment-methods">
+                <div class="payment-method">
+                    <img src="images/bkash.svg" alt="bKash" class="payment-logo" title="bKash">
+                </div>
+                <div class="payment-method">
+                    <img src="images/rocket.svg" alt="Rocket" class="payment-logo" title="Rocket">
+                </div>
+                <div class="payment-method">
+                    <img src="images/nagad.svg" alt="Nagad" class="payment-logo" title="Nagad">
+                </div>
+                <div class="payment-method">
+                    <img src="images/pathao-pay.svg" alt="Pathao Pay" class="payment-logo" title="Pathao Pay">
+                </div>
+                <div class="payment-method">
+                    <img src="images/binance.svg" alt="Binance" class="payment-logo" title="Binance">
+                </div>
+                <div class="payment-method">
+                    <img src="images/visa.svg" alt="Visa" class="payment-logo" title="Visa">
+                </div>
+                <div class="payment-method">
+                    <img src="images/mastercard.svg" alt="Mastercard" class="payment-logo" title="Mastercard">
+                </div>
+                <div class="payment-method">
+                    <img src="images/brac-bank.svg" alt="Brac Bank" class="payment-logo" title="Brac Bank">
+                </div>
+                <div class="payment-method">
+                    <img src="images/city-bank.svg" alt="City Bank" class="payment-logo" title="City Bank">
+                </div>
+                <div class="payment-method">
+                    <img src="images/pubali-bank.svg" alt="Pubali Bank" class="payment-logo" title="Pubali Bank">
+                </div>
+                <!-- Duplicate for seamless scrolling -->
+                <div class="payment-method">
+                    <img src="images/bkash.svg" alt="bKash" class="payment-logo" title="bKash">
+                </div>
+                <div class="payment-method">
+                    <img src="images/rocket.svg" alt="Rocket" class="payment-logo" title="Rocket">
+                </div>
+                <div class="payment-method">
+                    <img src="images/nagad.svg" alt="Nagad" class="payment-logo" title="Nagad">
+                </div>
+                <div class="payment-method">
+                    <img src="images/pathao-pay.svg" alt="Pathao Pay" class="payment-logo" title="Pathao Pay">
+                </div>
+                <div class="payment-method">
+                    <img src="images/binance.svg" alt="Binance" class="payment-logo" title="Binance">
+                </div>
+                <div class="payment-method">
+                    <img src="images/visa.svg" alt="Visa" class="payment-logo" title="Visa">
+                </div>
+                <div class="payment-method">
+                    <img src="images/mastercard.svg" alt="Mastercard" class="payment-logo" title="Mastercard">
+                </div>
+                <div class="payment-method">
+                    <img src="images/brac-bank.svg" alt="Brac Bank" class="payment-logo" title="Brac Bank">
+                </div>
+            </div>
+            <p class="payment-note" id="paymentNote">All major Bangladeshi payment methods supported</p>
+        </div>
+    </div>
+
+    <script>
+        let isDarkMode = false;
+        let isEnglish = true;
+ 
+        // Language texts
+        const translations = {
+            en: {
+                pageTitle: "PocketHisab Pricing",
+                pageSubtitle: "Choose the perfect plan for your personal accounting needs",
+                basicTitle: "Basic",
+                basicPeriod: "per month",
+                basicFeature1: "📱 300 SMS per month",
+                basicFeature2: "📊 Basic Dashboard",
+                basicFeature3: "💳 Income/Expense Tracking",
+                basicFeature4: "📧 Email Support",
+                basicBtn: "Select Basic",
+                standardTitle: "Standard",
+                standardPeriod: "per month",
+                standardFeature1: "📱 400 SMS per month",
+                standardFeature2: "📈 Advanced Dashboard",
+                standardFeature3: "📈 Investment Tracking",
+                standardFeature4: "⚡ Priority Support",
+                standardBtn: "Select Standard",
+                premiumTitle: "Premium",
+                premiumPeriod: "per month",
+                premiumFeature1: "📱 500 SMS per month",
+                premiumFeature2: "🎯 Full Feature Access",
+                premiumFeature3: "📑 Contract Management",
+                premiumFeature4: "🕒 24/7 Support",
+                basicPrice: "৳149",
+                standardPrice: "৳199",
+                premiumPrice: "৳249",
+                premiumBtn: "Select Premium",
+                popularBadge: "Most Popular",
+                bestForStarters: "Best for Starters",
+                ultimateFeatures: "Ultimate Features",
+                 summaryTitle: "Ready to Get Started?",
+                summaryText: "All plans include our core features with different SMS limits. Start with Basic and upgrade anytime. 30-day money-back guarantee on all plans.",
+                createAccountBtn: "📝 Create Account",
+                loginBtn: "🔐 Login Now",
+                paymentBkash: "bKash",
+                paymentNagad: "Nagad", 
+                paymentRocket: "Rocket",
+                paymentPathao: "Pathao Pay",
+                paymentCard: "Visa/MasterCard",
+                paymentBank: "Bank Transfer",
+                paymentUpay: "Upay",
+                paymentAmarPay: "AmarPay",
+                paymentNote: "All major Bangladeshi payment methods supported",
+                darkMode: "Dark mode activated",
+                lightMode: "Light mode activated",
+                englishSelected: "English language selected",
+                banglaSelected: "বাংলা ভাষা নির্বাচন করা হয়েছে",
+                planSelected: "Plan selected: ",
+                // FAQ translations (EN)
+                faqTitle: "Frequently Asked Questions",
+                faq1Q: "What payment methods do you accept?",
+                faq1A: "We accept all major Bangladeshi payment methods including bKash, Nagad, Rocket, Visa/MasterCard, and bank transfers.",
+                faq2Q: "Can I change my plan later?",
+                faq2A: "Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.",
+                faq3Q: "Is there a free trial available?",
+                faq3A: "We offer a 14-day free trial for all new users. No credit card required to start your trial.",
+                faq4Q: "How secure is my financial data?",
+                faq4A: "We use bank-level encryption and security measures to protect your data. Your financial information is completely safe with us."
+            },
+            bn: {
+                 faqTitle: "প্রায়শই জিজ্ঞাসিত প্রশ্নাবলি",
+                 pageTitle: "পকেটহিসাব মূল্য",
+                bestForStarters: "শুরুকারীদের জন্য সেরা",
+                ultimateFeatures: "সর্বোচ্চ ফিচারসমূহ",
+                 pageSubtitle: "আপনার ব্যক্তিগত অ্যাকাউন্টিং চাহিদার জন্য নিখুঁত প্ল্যান নির্বাচন করুন",
+                 basicTitle: "বেসিক",
+                basicPeriod: "প্রতি মাসে",
+                basicFeature1: "📱 প্রতি মাসে ৩০০ এসএমএস",
+                basicFeature2: "📊 বেসিক ড্যাশবোর্ড",
+                basicFeature3: "💳 আয়/ব্যয় ট্র্যাকিং",
+                basicFeature4: "📧 ইমেইল সাপোর্ট",
+                basicBtn: "বেসিক নির্বাচন করুন",
+                standardTitle: "স্ট্যান্ডার্ড",
+                standardPeriod: "প্রতি মাসে",
+                standardFeature1: "📱 প্রতি মাসে ৪০০ এসএমএস",
+                standardFeature2: "📈 এডভান্সড ড্যাশবোর্ড",
+                standardFeature3: "📈 বিনিয়োগ ট্র্যাকিং",
+                standardFeature4: "⚡ অগ্রাধিকার সাপোর্ট",
+                standardBtn: "স্ট্যান্ডার্ড নির্বাচন করুন",
+                premiumTitle: "প্রিমিয়াম",
+                premiumPeriod: "প্রতি মাসে",
+                premiumFeature1: "📱 প্রতি মাসে ৫০০ এসএমএস",
+                premiumFeature2: "🎯 সম্পূর্ণ ফিচার এক্সেস",
+                premiumFeature3: "📑 চুক্তি ব্যবস্থাপনা",
+                premiumFeature4: "🕒 ২৪/৭ সাপোর্ট",
+                basicPrice: "৳১৪৯",
+                standardPrice: "৳১৯৯",
+                premiumPrice: "৳২৪৯",
+                premiumBtn: "প্রিমিয়াম নির্বাচন করুন",
+                popularBadge: "সবচেয়ে জনপ্রিয়",
+                summaryTitle: "শুরু করতে প্রস্তুত?",
+                summaryText: "সমস্ত প্ল্যানে আমাদের মূল বৈশিষ্ট্যগুলি বিভিন্ন এসএমএস সীমা সহ অন্তর্ভুক্ত রয়েছে। বেসিক দিয়ে শুরু করুন এবং যেকোনো সময় আপগ্রেড করুন। সমস্ত প্ল্যানে ৩০-দিনের টাকা ফেরত গ্যারান্টি।",
+                createAccountBtn: "📝 অ্যাকাউন্ট তৈরি করুন",
+                loginBtn: "🔐 লগইন করুন",
+                paymentBkash: "বিকাশ",
+                paymentNagad: "নগদ",
+                paymentRocket: "রকেট",
+                paymentPathao: "পাঠাও পে",
+                paymentCard: "ভিসা/মাস্টারকার্ড",
+                paymentBank: "ব্যাংক ট্রান্সফার",
+                paymentUpay: "ইউপে",
+                paymentAmarPay: "আমারপে",
+                paymentNote: "সমস্ত প্রধান বাংলাদেশী পেমেন্ট মাধ্যম সমর্থিত",
+                darkMode: "ডার্ক মোড সক্রিয় করা হয়েছে",
+                lightMode: "লাইট মোড সক্রিয় করা হয়েছে",
+                englishSelected: "English language selected",
+                banglaSelected: "বাংলা ভাষা নির্বাচন করা হয়েছে",
+                planSelected: "প্ল্যান নির্বাচন করা হয়েছে: ",
+                // FAQ translations (BN)
+                faq1Q: "আপনি কোন পেমেন্ট মাধ্যমগুলো গ্রহণ করেন?",
+                faq1A: "আমরা বিকাশ, নগদ, রকেট, ভিসা/মাস্টারকার্ড এবং ব্যাংক ট্রান্সফার সহ সব প্রধান বাংলাদেশী পেমেন্ট মাধ্যম গ্রহণ করি।",
+                faq2Q: "আমি কি পরে আমার প্ল্যান পরিবর্তন করতে পারি?",
+                faq2A: "হ্যাঁ, আপনি যে কোনও সময় আপনার প্ল্যান আপগ্রেড বা ডাউনগ্রেড করতে পারেন। পরিবর্তনগুলি আপনার পরবর্তী বিলিং চক্রে প্রতিফলিত হবে।",
+                faq3Q: "কি কি-সাথে ফ্রি ট্রায়াল আছে?",
+                faq3A: "নতুন ব্যবহারকারীদের জন্য আমরা ১৪ দিনের ফ্রি ট্রায়াল অফার করি। ট্রায়াল শুরু করতে কোনো ক্রেডিট কার্ড প্রয়োজন নেই।",
+                faq4Q: "আমার আর্থিক ডেটা কতটা নিরাপদ?",
+                faq4A: "আমরা আপনার ডেটা রক্ষার জন্য ব্যাঙ্ক-স্তরের এনক্রিপশন এবং সুরক্ষা ব্যবস্থা ব্যবহার করি। আপনার আর্থিক তথ্য পুরোপুরি নিরাপদ।"
+            }
+        };
+
+        // Payment footer translation
+        const paymentFooterTranslations = {
+            en: {
+                paymentBkash: "bKash",
+                paymentNagad: "Nagad", 
+                paymentRocket: "Rocket",
+                paymentPathao: "Pathao Pay",
+                paymentCard: "Visa/MasterCard",
+                paymentBank: "Bank Transfer",
+                paymentUpay: "Upay",
+                paymentAmarPay: "AmarPay",
+                paymentNote: "All major Bangladeshi payment methods supported"
+            },
+            bn: {
+                paymentBkash: "বিকাশ",
+                paymentNagad: "নগদ",
+                paymentRocket: "রকেট",
+                paymentPathao: "পাঠাও পে",
+                paymentCard: "ভিসা/মাস্টারকার্ড",
+                paymentBank: "ব্যাংক ট্রান্সফার",
+                paymentUpay: "ইউপে",
+                paymentAmarPay: "আমারপে",
+                paymentNote: "সমস্ত প্রধান বাংলাদেশী পেমেন্ট মাধ্যম সমর্থিত"
+            }
+        };
+
+        // Create confetti animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confettiContainer');
+            confettiContainer.innerHTML = '';
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 2;
+                const size = Math.random() * 10 + 5;
+                const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                confetti.style.left = `${left}%`;
+                confetti.style.animationDelay = `${animationDelay}s`;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.background = color;
+                
+                confettiContainer.appendChild(confetti);
+            }
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                confettiContainer.innerHTML = '';
+            }, 3000);
+        }
+
+        // Update page content based on language
+        function updateLanguage(lang) {
+            const t = translations[lang];
+            const enSelected = (lang === 'en');
+
+            // Update navigation
+            document.querySelector('a[href="index.html"]').textContent = enSelected ? "Home" : "হোম";
+            document.querySelector('a[href="features.html"]').textContent = enSelected ? "Features" : "ফিচারসমূহ";
+            document.querySelector('a[href="pricing.html"]').textContent = enSelected ? "Pricing" : "মূল্য";
+            document.querySelector('a[href="contact.html"]').textContent = enSelected ? "Contact" : "যোগাযোগ";
+
+            // Update page content
+            document.getElementById('pageTitle').textContent = t.pageTitle;
+            document.getElementById('pageSubtitle').textContent = t.pageSubtitle;
+
+            // Update pricing cards
+            document.getElementById('basicTitle').textContent = t.basicTitle;
+            document.getElementById('basicPeriod').textContent = t.basicPeriod;
+            document.getElementById('basicFeature1').textContent = t.basicFeature1;
+            document.getElementById('basicFeature2').textContent = t.basicFeature2;
+            document.getElementById('basicFeature3').textContent = t.basicFeature3;
+            document.getElementById('basicFeature4').textContent = t.basicFeature4;
+            document.getElementById('basicBtn').textContent = t.basicBtn;
+
+            document.getElementById('standardTitle').textContent = t.standardTitle;
+            document.getElementById('standardPeriod').textContent = t.standardPeriod;
+            document.getElementById('standardFeature1').textContent = t.standardFeature1;
+            document.getElementById('standardFeature2').textContent = t.standardFeature2;
+            document.getElementById('standardFeature3').textContent = t.standardFeature3;
+            document.getElementById('standardFeature4').textContent = t.standardFeature4;
+            document.getElementById('standardBtn').textContent = t.standardBtn;
+
+            document.getElementById('premiumTitle').textContent = t.premiumTitle;
+            document.getElementById('premiumPeriod').textContent = t.premiumPeriod;
+            document.getElementById('premiumFeature1').textContent = t.premiumFeature1;
+            document.getElementById('premiumFeature2').textContent = t.premiumFeature2;
+            document.getElementById('premiumFeature3').textContent = t.premiumFeature3;
+            document.getElementById('premiumFeature4').textContent = t.premiumFeature4;
+            document.getElementById('premiumBtn').textContent = t.premiumBtn;
+            
+            // Update prices
+            document.getElementById('basicPrice').textContent = t.basicPrice;
+            document.getElementById('standardPrice').textContent = t.standardPrice;
+            document.getElementById('premiumPrice').textContent = t.premiumPrice;
+
+            document.getElementById('popularBadge').textContent = t.popularBadge;
+            document.getElementById('bestForStarters').textContent = t.bestForStarters;
+            document.getElementById('ultimateFeatures').textContent = t.ultimateFeatures;
+
+            // Update FAQ (questions + answers)
+            document.getElementById('faqTitle').textContent = t.faqTitle;
+            const faqQs = [t.faq1Q, t.faq2Q, t.faq3Q, t.faq4Q];
+            const faqAs = [t.faq1A, t.faq2A, t.faq3A, t.faq4A];
+            document.querySelectorAll('.faq-question h3').forEach((el, i) => {
+                if (faqQs[i]) el.textContent = faqQs[i];
+            });
+            document.querySelectorAll('.faq-answer p').forEach((el, i) => {
+                if (faqAs[i]) el.textContent = faqAs[i];
+            });
+
+            // Update summary section
+            document.getElementById('summaryTitle').textContent = t.summaryTitle;
+            document.getElementById('summaryText').textContent = t.summaryText;
+            document.getElementById('createAccountBtn').innerHTML = t.createAccountBtn;
+            document.getElementById('loginBtn').innerHTML = t.loginBtn;
+
+            // Update payment footer content
+            updatePaymentFooter(lang);
+
+            // Update page title
+            document.title = t.pageTitle;
+        }
+
+        // Update payment footer content
+        function updatePaymentFooter(lang) {
+            const t = paymentFooterTranslations[lang];
+            
+            // Update all payment method names
+            document.querySelectorAll('[id^="payment"]').forEach(element => {
+                const id = element.id.replace(/2$/, ''); // Remove duplicate number
+                if (t[id]) {
+                    element.textContent = t[id];
+                }
+            });
+        }
+
+        // Show message function
+        function showMessage(text, type) {
+            // Create temporary message element
+            const message = document.createElement('div');
+            message.textContent = text;
+            message.className = 'message ' + type;
+            message.style.display = 'block';
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 4000);
+        }
+
+        // Select Plan
+        function selectPlan(plan) {
+            const planName = isEnglish ? 
+                (plan === 'basic' ? 'Basic' : plan === 'standard' ? 'Standard' : 'Premium') :
+                (plan === 'basic' ? 'বেসিক' : plan === 'standard' ? 'স্ট্যান্ডার্ড' : 'প্রিমিয়াম');
+            
+            const message = isEnglish ? 
+                `${translations.en.planSelected}${planName}` : 
+                `${translations.bn.planSelected}${planName}`;
+                
+            showMessage(message, 'success');
+            createConfetti();
+            
+            // Save selected plan
+            localStorage.setItem('selectedPlan', plan);
+            
+            // Redirect to signup with plan pre-selected
+            setTimeout(() => {
+                window.location.href = 'signup.html';
+            }, 1500);
+        }
+
+        // Update Toggle Visual State
+        function updateDarkModeToggle(isDark) {
+            const thumbs = document.querySelectorAll('#darkModeToggle .toggle-thumb');
+            thumbs[0].classList.toggle('active', !isDark);
+            thumbs[1].classList.toggle('active', isDark);
+        }
+
+        function updateLanguageToggle(isEnglish) {
+            const thumbs = document.querySelectorAll('#languageToggle .toggle-thumb');
+            thumbs[0].classList.toggle('active', isEnglish);
+            thumbs[1].classList.toggle('active', !isEnglish);
+        }
+
+        // Scroll Animation for Mobile
+        function animateOnScroll() {
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            
+            pricingCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                    card.classList.add('card-visible');
+                }
+            });
+        }
+
+        // Show/hide back to top button
+        function toggleBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // FAQ Accordion
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        }
+
+        // Dark Mode Toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const isRightClick = clickX > rect.width / 2;
+            
+            if (isRightClick) {
+                // Dark Mode
+                isDarkMode = true;
+                document.body.classList.add('dark-mode');
+                updateDarkModeToggle(true);
+                const message = isEnglish ? translations.en.darkMode : translations.bn.darkMode;
+                showMessage(message, 'success');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                // Light Mode
+                isDarkMode = false;
+                document.body.classList.remove('dark-mode');
+                updateDarkModeToggle(false);
+                const message = isEnglish ? translations.en.lightMode : translations.bn.lightMode;
+                showMessage(message, 'success');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // Language Toggle
+        document.getElementById('languageToggle').addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const isRightClick = clickX > rect.width / 2;
+            
+            if (isRightClick) {
+                // Bangla
+                isEnglish = false;
+                updateLanguage('bn');
+                updateLanguageToggle(false);
+                showMessage(translations.bn.banglaSelected, 'success');
+                localStorage.setItem('language', 'bn');
+            } else {
+                // English
+                isEnglish = true;
+                updateLanguage('en');
+                updateLanguageToggle(true);
+                showMessage(translations.en.englishSelected, 'success');
+                localStorage.setItem('language', 'en');
+            }
+        });
+
+        // Back to Top Button
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Page loaded successfully
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load dark mode preference
+            const savedDarkMode = localStorage.getItem('darkMode');
+            if (savedDarkMode === 'true') {
+                isDarkMode = true;
+                document.body.classList.add('dark-mode');
+            }
+            updateDarkModeToggle(isDarkMode);
+            
+            // Load language preference
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage === 'bn') {
+                isEnglish = false;
+                updateLanguage('bn');
+            } else {
+                isEnglish = true;
+                updateLanguage('en');
+            }
+            updateLanguageToggle(isEnglish);
+
+            // Initialize FAQ
+            initFAQ();
+            
+            // Initial animation for pricing cards
+            setTimeout(() => {
+                animateOnScroll();
+            }, 300);
+
+            // Add event listeners
+            window.addEventListener('scroll', () => {
+                animateOnScroll();
+                toggleBackToTop();
+            });
+
+            console.log('🎉 PocketHisab Pricing Page Loaded!');
+
+            const welcomeText = isEnglish ? 'Choose the perfect plan for your needs!' : 'আপনার চাহিদার জন্য নিখুঁত প্ল্যান নির্বাচন করুন!';
+            showMessage(welcomeText, 'info');
+        });
+
+        // Add keyboard shortcut for dark mode (Ctrl+D)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                isDarkMode = !isDarkMode;
+                document.body.classList.toggle('dark-mode', isDarkMode);
+                updateDarkModeToggle(isDarkMode);
+                const message = isDarkMode ? 
+                    (isEnglish ? translations.en.darkMode : translations.bn.darkMode) :
+                    (isEnglish ? translations.en.lightMode : translations.bn.lightMode);
+                showMessage(message, 'success');
+                localStorage.setItem('darkMode', isDarkMode.toString());
+            }
+        });
+    </script>
+</body>
+</html>
